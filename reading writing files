@@ -1,0 +1,38 @@
+#include<iostream>
+#include<string>
+#include<fstream>
+#include<conio.h>
+using namespace std;
+
+int main(){
+	string contents;
+	int age=0;
+	int id=0;
+	char comma='$';
+	ofstream outFile("ABC5.txt",ios::app);
+	//outFile.open
+	outFile << "my first string";
+	outFile << 23;
+	outFile << ',';
+	outFile << 45;
+	outFile.close();
+
+	ifstream inFile;
+	inFile.open("ABC5.txt");
+	
+	if (!inFile)
+		cout << "cannot open file" << endl;
+
+//inFile >> contents;
+	
+	getline(inFile, contents); 
+	inFile >> id;
+	inFile >> comma;
+	inFile >> age;
+	
+	
+	inFile.close();
+	cout <<contents << id << comma<<age;
+	//cout << contents ;		//just read 
+	_getch();
+}

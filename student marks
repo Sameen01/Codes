@@ -1,0 +1,43 @@
+#include <stdio.h>
+
+int main()
+{
+	const int size = 101;
+	int *arr = (int*)calloc(size, sizeof(int));
+	
+	printf("Enter Number of Students: ");
+	int student = 0;
+	scanf("%d", &student);
+	
+	int *marks = (int*)malloc(student * sizeof(int));
+	
+	int i;
+	for(i = 0; i < student; ++i)
+	{
+		printf("Student %2d Marks: ", i+1);
+		scanf("%d", (marks + i));
+		if(*(marks + i) < 0 || *(marks + i) > 100)
+		{
+			printf("Invalid Marks. Try Again.\n");
+			--i;
+		}
+		else
+		{
+			++arr[*(marks + i)];
+		}
+	}
+	
+	int j;
+	printf("\n\n MARKS   SIZE");
+	for(i = 0; i < size; ++i)
+	{
+		if(arr[i] > 0)
+		{
+			printf("\n%3d ->   ", i);
+			for(j = 0; j < arr[i]; ++j)
+			{
+				printf("*");
+			}
+		}
+	}
+}

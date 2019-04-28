@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<string.h>
+
+
+main()
+{
+	struct Student
+	{
+		char ID[10];
+		char name[30];
+	};
+	int num_Stds;
+	char choice, again;
+	char search[30];
+	printf("Enter the number of students you want to record: ");
+	scanf("%d", &num_Stds);
+	struct Student list[num_Stds];
+	int i;
+	
+	for(i=0;i<num_Stds;i++)
+	{
+		printf("\nEnter Student unique ID: ");
+		gets(list[i].ID);
+		printf("\nEnter Student name: ");
+		gets(list[i].name);
+	}
+	printf("If you want to search any student press 'S' or if you want to delete data of any student press 'D'");
+	choice = getch();
+	if (choice == 's' || choice == 'S')
+	{
+		do
+		{
+		printf("Enter name or ID you want to search: ");
+		gets(search);
+		printf("\nStudent ID\tStudent Name\n");
+		for (i=0;i<num_Stds;i++)
+		{
+			if(search == list[i].name || search == list[i].ID)
+			{		
+				puts(list[i].ID);
+				printf("\t");
+				puts(list[i].name);
+			}
+		}
+		printf("Do you want to search again? press 'Y for yes and 'N' for No");
+		again = getch();
+		}while(again=='Y');
+	}
+}
+	
+	
+
+
